@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alondra Marrero Cabrera — Bioinformatics &amp; Cybersecurity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F0;
+    --paper-deep:#E7EBE4;
+    --ink:#132436;
+    --ink-soft:#3C4E5C;
+    --code-bg:#0F1B2A;
+    --code-line:#20344A;
+    --accent:#3E7C8C;
+    --accent-deep:#2C5C69;
+    --trace-a:#3E8F63;
+    --trace-t:#B4483C;
+    --trace-c:#33689C;
+    --trace-g:#2B2B2B;
+    --radius:2px;
+    --maxw:840px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--accent-deep); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:var(--accent);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--accent-deep);
+    display:block;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"# "; color:var(--ink-soft); opacity:0.55;}
+
+  h1,h2,h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    line-height:1.15;
+    margin:0 0 0.5em 0;
+    color:var(--ink);
+  }
+
+  .trace{
+    width:100%;
+    height:34px;
+    display:block;
+    margin:0 auto;
+  }
+  .trace-wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .hero{padding:88px 0 56px 0;}
+  .prompt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:2px;
+  }
+  .prompt .cursor{
+    display:inline-block;
+    width:8px; height:16px;
+    background:var(--accent);
+    margin-left:4px;
+    animation:blink 1.1s step-end infinite;
+  }
+  @keyframes blink{ 50%{opacity:0;} }
+
+  .hero h1{
+    font-size:clamp(30px, 5vw, 44px);
+    letter-spacing:-0.01em;
+  }
+  .hero .role{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:19px;
+    color:var(--ink-soft);
+    margin:6px 0 26px 0;
+    max-width:560px;
+  }
+  .hero .role strong{color:var(--ink); font-weight:600;}
+
+  .badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    border:1px solid var(--paper-deep);
+    background:#fff;
+    padding:5px 10px;
+    border-radius:var(--radius);
+  }
+
+  section{padding:52px 0;}
+  section.tight{padding:40px 0;}
+
+  p{margin:0 0 1em 0; color:var(--ink-soft);}
+  p:last-child{margin-bottom:0;}
+  p strong{color:var(--ink); font-weight:600;}
+
+  .lede{font-size:18px; max-width:640px;}
+
+  .project-card{
+    background:#fff;
+    border:1px solid var(--paper-deep);
+    border-radius:var(--radius);
+    padding:30px 30px 26px 30px;
+    margin-bottom:26px;
+  }
+  .project-card:last-child{margin-bottom:0;}
+  .project-card h3{font-size:21px; margin-bottom:10px;}
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(120px,1fr));
+    gap:18px;
+    margin:22px 0;
+    padding:18px 0;
+    border-top:1px solid var(--paper-deep);
+    border-bottom:1px solid var(--paper-deep);
+  }
+  .stat{font-family:'IBM Plex Mono', monospace;}
+  .stat .n{font-size:24px; font-weight:600; color:var(--ink); display:block;}
+  .stat .l{font-size:12.5px; color:var(--ink-soft); display:block; margin-top:2px;}
+
+  .gene-tags{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 4px 0;}
+  .gene-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:4px 9px;
+    border-radius:var(--radius);
+    color:#fff;
+  }
+  .gene-tag.mmp11{background:var(--trace-t);}
+  .gene-tag.col10a1{background:var(--trace-c);}
+  .gene-tag.eps{background:var(--trace-g);}
+
+  .card-links{margin-top:20px; display:flex; gap:18px; font-family:'IBM Plex Mono', monospace; font-size:14px;}
+
+  .eyebrow.sub{
+    font-size:12px; margin-bottom:6px; color:var(--ink-soft); opacity:0.85;
+  }
+  .eyebrow.sub::before{content:""; }
+
+  .bg-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:6px;
+  }
+  @media (max-width:620px){ .bg-grid{grid-template-columns:1fr;} }
+  .bg-item{padding-left:16px; border-left:2px solid var(--paper-deep);}
+  .bg-item h3{font-size:15px; color:var(--ink); margin-bottom:6px;}
+  .bg-item p{font-size:15px;}
+
+  .interest-list{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .interest-list li{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    padding-left:20px;
+    position:relative;
+  }
+  .interest-list li::before{
+    content:"›";
+    position:absolute; left:0; top:0;
+    color:var(--accent-deep);
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  footer{
+    background:var(--code-bg);
+    color:#CBD8E0;
+    padding:52px 0 60px 0;
+    margin-top:20px;
+  }
+  footer .eyebrow{color:#7FB8C7;}
+  footer .eyebrow::before{color:#7FB8C7; opacity:0.7;}
+  footer h2{color:#fff;}
+  footer p{color:#9FB1BE;}
+  .contact-links{margin-top:20px; display:flex; flex-direction:column; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:15px;}
+  .contact-links a{color:#8FD0DE;}
+  .contact-links a:hover{color:#fff;}
+  .fine{margin-top:36px; font-size:12.5px; color:#5C7181; font-family:'IBM Plex Mono', monospace;}
+
+  .fillme{
+    background:rgba(180,72,60,0.12);
+    border:1px dashed var(--trace-t);
+    color:var(--trace-t);
+    padding:1px 5px;
+    border-radius:2px;
+    font-size:0.92em;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap hero">
+  <div class="prompt">alondra@bioinformatics:~$ whoami<span class="cursor"></span></div>
+  <h1>Alondra Marrero Cabrera</h1>
+  <p class="role">
+    <strong>Cybersecurity professional</strong> turned <strong>computational biology</strong> researcher —
+    building the case for genomic data at the same rigor as the infrastructure that protects it.
+    Based in Puerto Rico.
+  </p>
+  <div class="badges">
+    <span class="badge">M.S. Computer Science, Cybersecurity</span>
+    <span class="badge">B.S. Biotechnology &amp; Chemistry</span>
+    <span class="badge">NSF CyberCorps SFS</span>
+    <span class="badge">Trilingual · EN / ES / PT</span>
+  </div>
+</div>
+
+<svg class="trace" viewBox="0 0 840 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <polyline points="0,17 20,17 24,4 28,17 48,17 52,30 56,17 76,17 80,10 84,17 104,17 108,24 112,17 132,17 136,6 140,17 160,17 164,28 168,17 188,17 192,12 196,17 216,17 220,3 224,17 244,17 248,26 252,17 272,17 276,9 280,17 300,17 304,22 308,17 328,17 332,5 336,17 356,17 360,29 364,17 384,17 388,11 392,17 412,17 416,4 420,17 440,17 444,27 448,17 468,17 472,8 476,17 496,17 500,21 504,17 524,17 528,6 532,17 552,17 556,30 560,17 580,17 584,10 588,17 608,17 612,25 616,17 636,17 640,7 644,17 664,17 668,29 672,17 692,17 696,12 700,17 720,17 724,4 728,17 748,17 752,26 756,17 776,17 780,9 784,17 804,17 808,22 812,17 832,17 836,17 840,17"
+    fill="none" stroke="var(--trace-c)" stroke-width="1.6" opacity="0.85"/>
+  <polyline points="0,17 16,17 20,29 24,17 44,17 48,6 52,17 72,17 76,25 80,17 100,17 104,10 108,17 128,17 132,27 136,17 156,17 160,4 164,17 184,17 188,23 192,17 212,17 216,7 220,17 240,17 244,28 248,17 268,17 272,11 276,17 296,17 300,20 304,17 324,17 328,6 332,17 352,17 356,26 360,17 380,17 384,9 388,17 408,17 412,24 416,17 436,17 440,5 444,17 464,17 468,29 472,17 492,17 496,10 500,17 520,17 524,22 528,17 548,17 552,7 556,17 576,17 580,28 584,17 604,17 608,12 612,17 632,17 636,4 640,17 660,17 664,26 668,17 688,17 692,9 696,17 716,17 720,23 724,17 744,17 748,6 752,17 772,17 776,29 780,17 800,17 804,11 808,17 828,17 832,17"
+    fill="none" stroke="var(--trace-t)" stroke-width="1.6" opacity="0.65"/>
+</svg>
+
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">about</span>
+    <p class="lede">
+      My work sits at a junction most people treat as two separate careers. Years of hands-on
+      blue-team and SOC work across healthcare and financial systems taught me that the
+      infrastructure carrying biomedical data is inseparable from the reliability of the science
+      built on top of it. My training in genetics and wet-lab biology taught me the other half —
+      what that data actually <em>is</em>. I'm applying that combination to a Ph.D. in
+      Bioinformatics: building the computational skills to work directly with genomic data, while
+      keeping the systems-and-security lens that got me here in the first place.
+    </p>
+  </div>
+</section>
+
+<div class="trace-wrap">
+  <svg class="trace" viewBox="0 0 840 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polyline points="0,17 18,17 22,7 26,17 46,17 50,27 54,17 74,17 78,12 82,17 102,17 106,22 110,17 130,17 134,5 138,17 158,17 162,29 166,17 186,17 190,10 194,17 214,17 218,24 222,17 242,17 246,6 250,17 270,17 274,26 278,17 298,17 302,9 306,17 326,17 330,21 334,17 354,17 358,4 362,17 382,17 386,28 390,17 410,17 414,11 418,17 438,17 442,23 446,17 466,17 470,7 474,17 494,17 498,25 502,17 522,17 526,8 530,17 550,17 554,20 558,17 578,17 582,3 586,17 606,17 610,27 614,17 634,17 638,10 642,17 662,17 666,24 670,17 690,17 694,6 698,17 718,17 722,29 726,17 746,17 750,12 754,17 774,17 778,22 782,17 802,17 806,5 810,17 830,17 834,17 838,17 840,17"
+      fill="none" stroke="var(--trace-a)" stroke-width="1.6" opacity="0.75"/>
+  </svg>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow">selected work</span>
+    <h2>Three projects, one thread</h2>
+
+    <div class="project-card">
+      <span class="eyebrow sub">01 · privacy</span>
+      <h3>Differential Privacy for Genomic Data Sharing</h3>
+      <p>
+        Quantifies the privacy-utility tradeoff in genomic data release: implements the Laplace
+        mechanism across seven privacy budgets (ε = 0.1–10) on real RNA-seq data, then measures
+        both how much statistical accuracy is lost and how well a simulated membership-inference
+        attacker is actually defeated at each level.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><span class="n">ε 0.1–10</span><span class="l">privacy levels tested</span></div>
+        <div class="stat"><span class="n">~0.50</span><span class="l">attack accuracy under noise (vs. 1.0 unprotected)</span></div>
+        <div class="stat"><span class="n">F1 &lt; 0.06</span><span class="l">DE-gene recovery, entire tested range</span></div>
+      </div>
+      <p>
+        The headline finding: privacy against re-identification is cheap to buy — even light noise
+        collapses attacker accuracy to chance — but preserving genuine scientific utility under
+        that same noise is hard, and doesn't improve smoothly as the privacy budget relaxes.
+      </p>
+      <div class="gene-tags">
+        <span class="gene-tag eps">Laplace mechanism</span>
+        <span class="gene-tag col10a1">membership inference</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/sepiaghost/genomic-privacy-analysis" target="_blank" rel="noopener">→ View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="eyebrow sub">02 · differential expression</span>
+      <h3>Cancer RNA-seq Analysis: Tumor vs. Normal</h3>
+      <p>
+        End-to-end RNA-seq differential expression pipeline built from raw TCGA data through
+        QC, DESeq2 analysis, visualization, and GO pathway enrichment — run on the complete
+        breast cancer cohort, not a subsample.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><span class="n">1,224</span><span class="l">samples analyzed</span></div>
+        <div class="stat"><span class="n">4,638</span><span class="l">genes upregulated</span></div>
+        <div class="stat"><span class="n">2,737</span><span class="l">genes downregulated</span></div>
+        <div class="stat"><span class="n">27,289</span><span class="l">genes tested</span></div>
+      </div>
+      <p>
+        The two most statistically significant genes recovered were established breast-cancer
+        stromal markers reported independently in prior TCGA-BRCA literature:
+      </p>
+      <div class="gene-tags">
+        <span class="gene-tag mmp11">MMP11</span>
+        <span class="gene-tag col10a1">COL10A1</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/sepiaghost/cancer-rnaseq-analysis_done" target="_blank" rel="noopener">→ View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="eyebrow sub">03 · biophysics</span>
+      <h3>Hodgkin-Huxley Neuron Model</h3>
+      <p>
+        A numerical implementation of the Hodgkin &amp; Huxley (1952) model of the action
+        potential in the squid giant axon — four coupled nonlinear ODEs, solved with an adaptive
+        solver (<code>deSolve::ode()</code>, <code>lsoda</code>) rather than the fixed-step Euler's
+        method used in the original hand-computed version.
+      </p>
+      <p>
+        A personal recreation: this started as an undergraduate biophysics assignment built by
+        hand in Excel, assigned by the professor who is now writing one of my Ph.D. recommendation
+        letters. Rebuilding it in R extends the original with an F-I curve sweep to locate rheobase
+        and a double-pulse protocol to measure the absolute refractory period.
+      </p>
+      <div class="gene-tags">
+        <span class="gene-tag eps">m³h / n⁴ gating kinetics</span>
+        <span class="gene-tag col10a1">adaptive ODE integration</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/sepiaghost/hodgkin-huxley-neuron-model" target="_blank" rel="noopener">→ View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="background">
+  <div class="wrap">
+    <span class="eyebrow">background</span>
+    <h2>Where the two sides meet</h2>
+    <div class="bg-grid">
+      <div class="bg-item">
+        <h3>Cybersecurity</h3>
+        <p>
+          Hands-on blue-team and SOC experience across healthcare and financial sectors. Graduate
+          capstone: a security assessment of Puerto Rico's Department of Health COVID-19 data
+          platform, framed through a cyber-biosecurity lens. NSF CyberCorps Scholarship for
+          Service (SFS) recipient. Graduate Certificate in Digital Evidence.
+        </p>
+      </div>
+      <div class="bg-item">
+        <h3>Genetics, Biology &amp; Chemistry</h3>
+        <p>
+          B.S. in Natural Science, double major in Biotechnology and Chemistry, Universidad del
+          Sagrado Corazón — undergraduate wet-lab research including genetic engineering of
+          <em>E. coli</em>, PCR, ICP-OES, and microbial fuel cells.
+        </p>
+      </div>
+      <div class="bg-item">
+        <h3>Computer Science</h3>
+        <p>
+          M.S. in Computer Science, Cybersecurity concentration, Polytechnic University of Puerto
+          Rico — 3.92 GPA.
+        </p>
+      </div>
+      <div class="bg-item">
+        <h3>Teaching</h3>
+        <p>
+          Runs a Saturday Arduino and electronics class for students in Puerto Rico, using the
+          uKit Explore V2 platform.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="interests" class="tight">
+  <div class="wrap">
+    <span class="eyebrow">research directions</span>
+    <ul class="interest-list">
+      <li>Privacy-preserving machine learning for genomic and clinical data</li>
+      <li>Anomaly detection in EHR and multi-omics pipelines</li>
+      <li>Computational genomics and cancer transcriptomics</li>
+      <li>Security of biomedical and health-information infrastructure</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow">contact</span>
+    <h2>Get in touch</h2>
+    <p>Applying to Ph.D. programs in Bioinformatics for Fall 2027.</p>
+    <div class="contact-links">
+      <a href="https://github.com/sepiaghost" target="_blank" rel="noopener">→ github.com/sepiaghost</a>
+      <a href="https://linkedin.com/in/alondra-marrero-cabrera/" target="_blank" rel="noopener">→ linkedin.com/in/alondra-marrero-cabrera</a>
+      <a href="mailto:alondram248@gmail.com">→ alondram248@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
