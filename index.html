@@ -254,8 +254,9 @@
       infrastructure carrying biomedical data is inseparable from the reliability of the science
       built on top of it. My training in genetics and wet-lab biology taught me the other half —
       what that data actually <em>is</em>. I'm applying that combination to a Ph.D. in
-      Bioinformatics: building the computational skills to work directly with genomic data, while
-      keeping the systems-and-security lens that got me here in the first place.
+      bioinformatics and AI for health data: building the computational and machine-learning
+      skills to work directly with genomic and clinical data, and to make that work private and
+      secure, while keeping the systems-and-security lens that got me here in the first place.
     </p>
   </div>
 </section>
@@ -270,7 +271,7 @@
 <section id="work">
   <div class="wrap">
     <span class="eyebrow">selected work</span>
-    <h2>Seven projects, one thread</h2>
+    <h2>Eight projects, one thread</h2>
 
     <div class="project-card">
       <span class="eyebrow sub">01 · privacy</span>
@@ -351,7 +352,7 @@
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" id="dp-deep-learning">
       <span class="eyebrow sub">04 · deep learning &amp; privacy</span>
       <h3>Differentially Private Deep Learning for Cancer Classification</h3>
       <p>
@@ -378,6 +379,7 @@
       </div>
       <div class="card-links">
         <a href="https://github.com/sepiaghost/dp-deep-learning-genomics" target="_blank" rel="noopener">→ View on GitHub</a>
+        <a href="#dp-subtype-fairness">→ Follow-up: rare subtypes</a>
       </div>
     </div>
 
@@ -471,6 +473,42 @@
         <a href="#sample-tracker">→ Companion: sample tracker</a>
       </div>
     </div>
+
+    <div class="project-card" id="dp-subtype-fairness">
+      <span class="eyebrow sub">08 · privacy &amp; fairness</span>
+      <h3>Does DP-SGD Hurt Rare Cancer Subtypes?</h3>
+      <p>
+        A follow-up to project 04. Tumor vs. normal is almost perfectly separable, so privacy noise
+        barely shows there. This study asks a harder question: when a network classifies four PAM50
+        breast cancer subtypes (821 TCGA-BRCA tumors), does DP-SGD cost every subtype the same?
+        Ten random splits, privacy budgets from &epsilon; = 0.5 to 8, and a non-private baseline.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><span class="n">0.85 &rarr; 0.79</span><span class="l">overall accuracy at &epsilon; = 8</span></div>
+        <div class="stat"><span class="n">0.84 &rarr; 0.28</span><span class="l">HER2 recall at &epsilon; = 8, the rarest subtype</span></div>
+        <div class="stat"><span class="n">0.00</span><span class="l">HER2 recall at &epsilon; &le; 2</span></div>
+        <div class="stat"><span class="n">0.76</span><span class="l">HER2 recall at &epsilon; = 8 after a prior correction (total &epsilon; &asymp; 8.1)</span></div>
+      </div>
+      <p>
+        The headline: overall accuracy hides the damage. The larger subtypes stay high while the
+        rare ones collapse, even though HER2's AUROC stays high, so the model still ranks HER2
+        samples sensibly but defaults to the big classes at the decision threshold. A post-hoc
+        class-prior correction, with the class counts released under a Laplace mechanism so the
+        privacy cost is counted, recovers most of the lost HER2 recall at &epsilon; = 2 to 8. It
+        fails at &epsilon; &le; 1 and does little for LumB. The pattern held across three clip norms.
+        The README lists the limitations plainly, including partial privacy accounting and the fact
+        that PAM50 labels are themselves derived from expression.
+      </p>
+      <div class="gene-tags">
+        <span class="gene-tag eps">DP-SGD / Opacus</span>
+        <span class="gene-tag col10a1">subgroup fairness</span>
+        <span class="gene-tag eps">class-prior correction</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/sepiaghost/dp-subtype-fairness" target="_blank" rel="noopener">→ View on GitHub</a>
+        <a href="#dp-deep-learning">→ Builds on: DP deep learning</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -519,6 +557,7 @@
     <span class="eyebrow">research directions</span>
     <ul class="interest-list">
       <li>Privacy-preserving machine learning for genomic and clinical data</li>
+      <li>How privacy-preserving training affects rare patient subgroups, and how to fix it</li>
       <li>Anomaly detection in EHR and multi-omics pipelines</li>
       <li>Computational genomics and cancer transcriptomics</li>
       <li>Security of biomedical and health-information infrastructure</li>
@@ -530,7 +569,7 @@
   <div class="wrap">
     <span class="eyebrow">contact</span>
     <h2>Get in touch</h2>
-    <p>Applying to Ph.D. programs in Bioinformatics for Fall 2027.</p>
+    <p>Applying to Ph.D. programs in bioinformatics and AI for health data for Fall 2027.</p>
     <div class="contact-links">
       <a href="https://github.com/sepiaghost" target="_blank" rel="noopener">→ github.com/sepiaghost</a>
       <a href="https://linkedin.com/in/alondra-marrero-cabrera/" target="_blank" rel="noopener">→ linkedin.com/in/alondra-marrero-cabrera</a>
