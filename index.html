@@ -6,7 +6,7 @@
 <title>Alondra Marrero Cabrera — Bioinformatics &amp; Cybersecurity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F6F2EE; --card:#FFFFFF; --line:#E8E0D9;
@@ -114,12 +114,34 @@ footer p{color:#B9B0BE;}
 .contact-links{margin-top:18px;display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:15px;}
 .contact-links a{color:var(--pink);}
 .contact-links a:hover{color:#fff;}
+
+/* terminal-listing layout (home + blog) */
+.who{font-family:'IBM Plex Mono',monospace;font-size:14.5px;color:var(--ink-soft);line-height:1.9;margin-top:18px;}
+.who span{display:block;}
+.term{font-family:'IBM Plex Mono',monospace;font-size:15px;margin:44px 0 6px;color:var(--ink);}
+.term .u{color:var(--pink-deep);}
+.term .p{color:var(--ink-soft);}
+.ls{border-top:1px solid var(--line);margin-top:14px;}
+.ls-row{display:block;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;}
+.ls-row:hover .ls-name{text-decoration:underline;text-underline-offset:5px;}
+.ls-row:hover{background:linear-gradient(90deg,var(--pink-wash),transparent 70%);}
+.ls-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.ls-name{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:21px;color:var(--pink-deep);}
+.ls-tag{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--pink-deep);white-space:nowrap;}
+.ls-desc{font-family:'IBM Plex Serif',Georgia,serif;font-size:18px;color:var(--ink-soft);margin:8px 0 0;max-width:640px;line-height:1.55;}
+.path-prompt{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink-soft);margin-bottom:18px;}
+.path-prompt .u{color:var(--pink-deep);}
+.post-meta{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--pink-deep);}
+.empty{font-family:'IBM Plex Mono',monospace;font-size:14.5px;color:var(--ink-soft);padding:26px 0;border-bottom:1px solid var(--line);}
+article.post{max-width:680px;}
+article.post p{font-family:'IBM Plex Serif',Georgia,serif;font-size:18px;line-height:1.75;}
+article.post h2{margin-top:1.6em;}
 </style>
 </head>
 <body>
 <nav class="top"><div class="wrap">
   <a class="brand" href="index.html"><span>&gt;_</span> alondra</a>
-  <ul><li><a class="l" href="index.html" aria-current="page">Home</a></li><li><a class="l" href="ai-security.html">AI security</a></li><li><a class="l" href="bioinformatics.html">Bioinformatics</a></li><li><a class="l" href="for-fun.html">For fun</a></li></ul>
+  <ul><li><a class="l" href="index.html" aria-current="page">Home</a></li><li><a class="l" href="ai-security.html">AI security</a></li><li><a class="l" href="bioinformatics.html">Bioinformatics</a></li><li><a class="l" href="for-fun.html">For fun</a></li><li><a class="l" href="blog.html">Blog</a></li></ul>
 </div></nav>
 
 <div class="wrap hero">
@@ -127,11 +149,21 @@ footer p{color:#B9B0BE;}
   <h1>Alondra Marrero Cabrera</h1>
   <p class="role"><strong>Cybersecurity professional</strong> turned <strong>computational biology</strong> researcher &mdash;
   building the case for genomic data at the same rigor as the infrastructure that protects it. Based in Puerto Rico.</p>
-  <div class="badges">
-    <span class="badge">M.S. Computer Science, Cybersecurity</span>
-    <span class="badge">B.S. Biotechnology &amp; Chemistry</span>
-    <span class="badge">NSF CyberCorps SFS</span>
-    <span class="badge">Trilingual &middot; EN / ES / PT</span>
+  <div class="who">
+    <span>M.S. Computer Science (Cybersecurity) &middot; B.S. Biotechnology &amp; Chemistry</span>
+    <span>NSF CyberCorps Scholarship for Service &middot; (ISC)&sup2; SSCP &middot; Graduate Certificate in Digital Evidence</span>
+    <span>English / Espa&ntilde;ol / Portugu&ecirc;s</span>
+  </div>
+  <div class="term"><span class="u">alondra@bioinformatics</span><span class="p">:~$</span> ls</div>
+  <div class="ls">
+    <a class="ls-row" href="ai-security.html"><div class="ls-top"><span class="ls-name">ai-security/</span><span class="ls-tag">6 projects</span></div>
+      <p class="ls-desc">Backdoors, privacy-preserving training, tamper-evident records, and genomic forensics for health AI.</p></a>
+    <a class="ls-row" href="bioinformatics.html"><div class="ls-top"><span class="ls-name">bioinformatics/</span><span class="ls-tag">4 projects</span></div>
+      <p class="ls-desc">Cancer transcriptomics, VCF variant analysis, gene lookup, and a neuron model rebuilt from scratch.</p></a>
+    <a class="ls-row" href="for-fun.html"><div class="ls-top"><span class="ls-name">for-fun/</span><span class="ls-tag">ongoing</span></div>
+      <p class="ls-desc">dear_firewall and Cybersec Diaries, plus teaching and things built because they're fun, not for a deadline.</p></a>
+    <a class="ls-row" href="blog.html"><div class="ls-top"><span class="ls-name">blog/</span><span class="ls-tag">notes</span></div>
+      <p class="ls-desc">Longer write-ups that didn't fit in a project README.</p></a>
   </div>
 </div>
 
@@ -144,22 +176,6 @@ footer p{color:#B9B0BE;}
   combination to a Ph.D. in bioinformatics and AI for health data: building the computational and
   machine-learning skills to work directly with genomic and clinical data, and to make that work private and
   secure, while keeping the systems-and-security lens that got me here in the first place.</p>
-</div></section>
-
-<section id="work"><div class="wrap">
-  <span class="eyebrow">selected work</span>
-  <h2>Ten projects, three areas</h2>
-  <div class="areas">
-    <a class="area" href="ai-security.html"><h3>AI security &amp; privacy</h3>
-      <p>Backdoor detection, differentially private deep learning, tamper-evident records, genomic forensics.</p>
-      <span class="go">6 projects &rarr;</span></a>
-    <a class="area" href="bioinformatics.html"><h3>Bioinformatics</h3>
-      <p>RNA-seq differential expression, Ensembl gene lookup, VCF variant analysis, a Hodgkin-Huxley neuron model.</p>
-      <span class="go">4 projects &rarr;</span></a>
-    <a class="area" href="for-fun.html"><h3>For fun: dear_firewall</h3>
-      <p>Cybersec Diaries, a bilingual tech content project with its own brand.</p>
-      <span class="go">meet Dear Firewall &rarr;</span></a>
-  </div>
 </div></section>
 
 <section id="background"><div class="wrap">
