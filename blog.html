@@ -128,6 +128,7 @@ footer p{color:#B9B0BE;}
 .ls-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
 .ls-name{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:21px;color:var(--pink-deep);}
 .ls-tag{font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--pink-deep);white-space:nowrap;}
+@media (max-width:620px){.ls-top{flex-direction:column;gap:4px;}.ls-name{overflow-wrap:anywhere;font-size:18px;}.ls-tag{white-space:normal;}}
 .ls-desc{font-family:'IBM Plex Serif',Georgia,serif;font-size:18px;color:var(--ink-soft);margin:8px 0 0;max-width:640px;line-height:1.55;}
 .path-prompt{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink-soft);margin-bottom:18px;}
 .path-prompt .u{color:var(--pink-deep);}
@@ -145,14 +146,24 @@ article.post h2{margin-top:1.6em;}
 </div></nav>
 
 <div class="wrap page-head">
-  <div class="path-prompt"><span class="u">alondra@bioinformatics</span>:~/blog$ ls -t</div>
+  <div class="path-prompt"><span class="u">alondra@bioinformatics</span>:~/blog$ ls</div>
   <h1>Blog</h1>
-  <p class="lede">Longer write-ups that didn't fit in a project README: what I built, what broke, and what I'd do differently.</p>
+  <p class="lede">Longer write-ups that didn't fit in a project README: what I built, what broke, and what I'd do differently. Also my notes and thoughts on what's happening now in AI security.</p>
 </div>
 <section><div class="wrap">
+  <div class="term"><span class="u">alondra@bioinformatics</span><span class="p">:~/blog/write-ups$</span> ls -t</div>
   <div class="ls">
+    <a class="ls-row" href="dp-rare-cancer-subtypes.html"><div class="ls-top"><span class="ls-name">dp-rare-cancer-subtypes.md</span><span class="ls-tag">2026-11-26 &middot; bioinformatics</span></div>
+      <div class="ls-desc">I trained cancer classifiers with differential privacy. The overall accuracy looked fine, but the rare HER2 subtype was the one that paid for it.</div></a>
     <a class="ls-row" href="screening-a-checkpoint.html"><div class="ls-top"><span class="ls-name">screening-a-checkpoint.md</span><span class="ls-tag">2026-11-23 &middot; ai-security</span></div>
       <div class="ls-desc">What I learned building a detector for neuron-editing backdoors: accuracy monitoring sees nothing, and the cheapest control beat the clever ones.</div></a>
+  </div>
+  <div class="term"><span class="u">alondra@bioinformatics</span><span class="p">:~/blog/ai-security$</span> ls -t</div>
+  <div class="ls">
+    <a class="ls-row" href="ai-agent-open-door.html"><div class="ls-top"><span class="ls-name">ai-agent-open-door.md</span><span class="ls-tag">2026-11-26 &middot; ai-security</span></div>
+      <div class="ls-desc">OpenAI test agents escaped their sandbox and broke into Hugging Face. What happened, why &ldquo;rogue&rdquo; is the wrong word, and what it means for AI security.</div></a>
+    <a class="ls-row" href="2026-cyberattacks-ranking.html"><div class="ls-top"><span class="ls-name">2026-cyberattacks-ranking.md</span><span class="ls-tag">2026-11-26 &middot; cybersecurity</span></div>
+      <div class="ls-desc">Ranking 2026's biggest cyberattacks, why they feel nonstop, how the year compares with 2020, and what it means for you. Fact-checked, with sources.</div></a>
   </div>
 </div></section>
 <footer>
